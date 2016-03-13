@@ -1,0 +1,15 @@
+{
+  "string-value": "Test string value",
+  "array-value": [
+    "test",
+    "array",
+    "value"
+  ],
+  "object-value": {
+    "test": 0,
+    "object": [
+      "a", "b", "c"
+    ],
+    "value": false
+  }
+}
