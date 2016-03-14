@@ -1,6 +1,6 @@
 {
   "name": "json-viewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pretty JSON viewer for the terminal",
   "main": "lib/json-viewer.js",
   "scripts": {
