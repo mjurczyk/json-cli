@@ -89,7 +89,15 @@ var trimFlags = (params) => {
         showHelp();
         breakFlag = true;
       break;
-      case '--set-color':
+      case '--always-color':
+        try {
+          fs.writeFileSync(CONFIG_FILE, JSON.stringify({
+            'alwaysColor': true
+          }), 'utf8');
+        } catch (err) {
+          error('FlagsError: ' + err);
+          throw err;
+        }
         breakFlag = true;
       break;
     };
@@ -128,8 +136,22 @@ let jCat = (params) => {
   let file;
   let filename;
   let result;
+  let breakFlag;
+  let config;
   let depthMap = Object().toString();
-  let breakFlag = false;
+  
+  try {
+    config = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
+    
+    if (config.alwaysColor) {
+      params.unshift('-c');
+    }
+  } catch (err) {
+    if (err.code !== 'ENOENT') {
+      error(err);
+      return;
+    }
+  }
   
   breakFlag = trimFlags(params);
   
@@ -158,7 +180,7 @@ let jCat = (params) => {
       }
     }
   } catch (err) {
-    error('Error: ' + err);
+    error('RuntimeError: ' + err);
     return;
   }
   

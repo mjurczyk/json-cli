@@ -17,3 +17,5 @@ const NEWLINE             = '\n\r';
 
 const PROCESS_OK          = 0;
 const PROCESS_ERROR       = 1;
+
+const CONFIG_FILE         = __dirname + '/.json-viewer-config';
