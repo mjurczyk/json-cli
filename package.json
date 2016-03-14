@@ -1,14 +1,14 @@
 {
-  "name": "json-cli",
+  "name": "json-viewer",
   "version": "1.0.0",
   "description": "Pretty JSON viewer for the terminal",
-  "main": "lib/json-cli.js",
+  "main": "lib/json-viewer.js",
   "scripts": {
     "start": "npm run build",
     "build": "npm run transpile && npm run compress",
-    "transpile": "babel src --out-file lib/json-cli.js",
-    "compress": "uglifyjs lib/json-cli.js -m -c -o lib/json-cli.js",
-    "test": "node test/json-cli-test.js"
+    "transpile": "babel src --out-file lib/json-viewer.js",
+    "compress": "uglifyjs lib/json-viewer.js -m -c -o lib/json-viewer.js",
+    "test": "node test/json-viewer-test.js"
   },
   "keywords": [
     "json",
@@ -19,9 +19,16 @@
   ],
   "author": "mjurczyk",
   "license": "MIT",
-  "files": "./lib/json-cli.js",
+  "files": "./lib/json-viewer.js",
   "bin": {
-    "json": "./lib/json-cli.js"
+    "json": "./lib/json-cli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mjurczyk/json-viewer"
+  },
+  "dependencies": {
+    "colors": "^1.1.2"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -30,7 +37,6 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "chai": "^3.5.0",
-    "colors": "^1.1.2",
     "uglify-js": "^2.6.2"
   }
 }

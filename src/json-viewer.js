@@ -72,6 +72,8 @@ var getContextualColor = (value, depth = 0) => {
 };
 
 var trimFlags = (params) => {
+  let breakFlag = false;
+  
   while ((params[0] || '').indexOf('-') === 0) {
     switch (params[0]) {
       case '-s':
@@ -82,10 +84,20 @@ var trimFlags = (params) => {
       case '--color':
         THEME = THEME_COLOR;
       break;
+      case '-h':
+      case '--help':
+        showHelp();
+        breakFlag = true;
+      break;
+      case '--set-color':
+        breakFlag = true;
+      break;
     };
     
     params.splice(0, 1);
   }
+  
+  return breakFlag;
 };
 
 var trimParams = (params) => {
@@ -117,8 +129,14 @@ let jCat = (params) => {
   let filename;
   let result;
   let depthMap = Object().toString();
+  let breakFlag = false;
   
-  trimFlags(params);
+  breakFlag = trimFlags(params);
+  
+  if (breakFlag) {
+    return;
+  }
+  
   filename = trimFilename(params);
   params = trimParams(params);
   
@@ -141,15 +159,11 @@ let jCat = (params) => {
     }
   } catch (err) {
     error('Error: ' + err);
-    if (isCLI()) {
-      process.exit(PROCESS_ERROR);
-    }
+    return;
   }
   
-  log(`\r${getContextualColor(result)}`);
-  
-  if (isCLI()) {
-    process.exit(PROCESS_OK);
+  if (result !== undefined) {
+    log(`\r${getContextualColor(result)}`);
   }
   
   return result;

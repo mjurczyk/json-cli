@@ -1,7 +1,7 @@
 var fs = require('fs');
 var chai = require('chai');
 var expect = chai.expect;
-var cli = require('../lib/json-cli.js');
+var cli = require('../lib/json-viewer.js');
 var testFile = __dirname + '/json-file.json';
 
 function testCli() {
