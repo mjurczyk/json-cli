@@ -39,3 +39,7 @@ json myJsonFile.json user.friends._ids
 ```
 
 If the parameter you ask for doesn't exist, viewer will return the last valid parent and inform you about the problem.
+
+### Autocompletion
+
+You can use `tab` key to browse JSON properties on the fly and autofill long names.
