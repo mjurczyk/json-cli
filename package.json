@@ -1,6 +1,6 @@
 {
   "name": "json-viewer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Pretty JSON viewer for the terminal",
   "main": "lib/json-viewer.js",
   "scripts": {
@@ -19,16 +19,16 @@
   ],
   "author": "mjurczyk",
   "license": "MIT",
-  "files": "./lib/json-viewer.js",
   "bin": {
-    "json": "./lib/json-cli"
+    "json": "./bin/json-cli"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/mjurczyk/json-viewer"
   },
   "dependencies": {
-    "colors": "^1.1.2"
+    "colors": "^1.1.2",
+    "tabtab": "0.0.4"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -37,6 +37,12 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "chai": "^3.5.0",
-    "uglify-js": "^2.6.2"
+    "uglify-js": "^2.6.2",
+    "very": {
+      "deep": "struct",
+      "even": {
+        "deeper": "struct"
+      }
+    }
   }
 }

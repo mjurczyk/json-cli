@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+var jsonViewer = require('../lib/json-viewer.js');
+
+jsonViewer(process.argv.slice(2));

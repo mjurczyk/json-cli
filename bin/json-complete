@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+getCliCompletitions () {
+  local cur
+  local cwd
+  local file
+  
+  COMPREPLY=()
+  cur=${COMP_WORDS[COMP_CWORD]}
+  cwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+  file=${COMP_WORDS[1]}
+
+  # First argument (either a flag or a filepath)
+  if [[ $COMP_CWORD < 2 ]]; then
+    case "$cur" in
+      --s*) # Turn silent mode on
+      COMPREPLY=( $( compgen -W '--silent' ) )
+      ;;
+      --a*) # Turn permanent coloring on
+      COMPREPLY=( $( compgen -W '--always-color' ) )
+      ;;
+      -*)
+      COMPREPLY=( $( compgen -W '--color --always-color --silent' ) )
+      ;;
+      *) # Return filenames if no command matches
+      COMPREPLY=( $( compgen -d -f "${cur}" ) )
+      ;;
+    esac
+  else
+    local props=($( node ${cwd}/../lib/json-viewer.js --noerr --structure-tree "${file}" "${cur}" ))
+    local propsS="${props[@]}"
+
+    COMPREPLY=( $( compgen -W "${propsS}" ) )
+  fi;
+}
+
+complete -F getCliCompletitions json

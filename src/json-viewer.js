@@ -72,13 +72,14 @@ var getContextualColor = (value, depth = 0) => {
 };
 
 var trimFlags = (params) => {
-  let breakFlag = false;
-  
   while ((params[0] || '').indexOf('-') === 0) {
     switch (params[0]) {
       case '-s':
       case '--silent':
         log = () => {};
+      break;
+      case '--noerr':
+        error = () => {};
       break;
       case '-c':
       case '--color':
@@ -100,12 +101,13 @@ var trimFlags = (params) => {
         }
         breakFlag = true;
       break;
+      case '--structure-tree':
+        printStructureFlag = true;
+      break;
     };
     
     params.splice(0, 1);
   }
-  
-  return breakFlag;
 };
 
 var trimParams = (params) => {
@@ -136,9 +138,9 @@ let jCat = (params) => {
   let file;
   let filename;
   let result;
-  let breakFlag;
   let config;
-  let depthMap = Object().toString();
+  let depthMap = [];
+  let depthMapBase = Object().toString();
   
   try {
     config = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
@@ -153,7 +155,7 @@ let jCat = (params) => {
     }
   }
   
-  breakFlag = trimFlags(params);
+  trimFlags(params);
   
   if (breakFlag) {
     return;
@@ -172,11 +174,44 @@ let jCat = (params) => {
       
       if (isDefined(iterationValue)) {
         result = iterationValue;
-        depthMap += `.${nextParam}`;
+        depthMap.push(nextParam);
         params.splice(0, 1);
       } else {
-        error(`Error: ${depthMap}.${nextParam} is not defined. Returning ${depthMap}.`);
-        params = [];
+        if (printStructureFlag) {
+          var structurePath = [];
+          
+          structurePath = Object.keys(result)
+          .filter((key) => {
+            return key.indexOf(nextParam) === 0;
+          });
+          
+          structurePath.forEach((key) => {
+            let value = result[key];
+            
+            if (isObject(value) && !isEmptyObject(value)) {
+              Object.keys(value).forEach((childKey) => {
+                structurePath.push(`${depthMap.concat([ key, childKey ]).join('.')}`);
+              });
+            }
+          });
+          
+          result = structurePath
+          .map((key) => {
+            let value = result[key];
+            
+            if (isObject(value) && !isEmptyObject(value)) {
+              key += '.';
+            }
+            
+            return `${depthMap.concat([ `${key}` ]).join('.')}`;
+          })
+          .join(' ');
+          params = [];
+        } else {
+          depthMap.unshift(depthMapBase);
+          error(`Error: ${depthMap.join('.')}.${nextParam} is not defined. Returning ${depthMap.join('.')}.`);
+          params = [];
+        }
       }
     }
   } catch (err) {
@@ -184,8 +219,10 @@ let jCat = (params) => {
     return;
   }
   
-  if (result !== undefined) {
+  if (result !== undefined && !printStructureFlag) {
     log(`\r${getContextualColor(result)}`);
+  } else if (printStructureFlag) {
+    log(result);
   }
   
   return result;
