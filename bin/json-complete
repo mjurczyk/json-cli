@@ -16,11 +16,14 @@ getCliCompletitions () {
       --s*) # Turn silent mode on
       COMPREPLY=( $( compgen -W '--silent' ) )
       ;;
+      --c*) # Turn color mode on
+      COMPREPLY=( $( compgen -W '--color' ) )
+      ;;
       --a*) # Turn permanent coloring on
       COMPREPLY=( $( compgen -W '--always-color' ) )
       ;;
       -*)
-      COMPREPLY=( $( compgen -W '--color --always-color --silent' ) )
+      COMPREPLY=( $( compgen -W '--always-color --color --silent' ) )
       ;;
       *) # Return filenames if no command matches
       COMPREPLY=( $( compgen -d -f "${cur}" ) )

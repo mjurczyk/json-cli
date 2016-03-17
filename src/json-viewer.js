@@ -165,54 +165,34 @@ let jCat = (params) => {
   params = trimParams(params);
   
   try {
+    let nextParam;
+    let lastParam;
+    let iterationValue;
+    
     file = fs.readFileSync(filename, 'utf8');
     result = JSON.parse(file);
     
     while (isDefined(params[0])) {
-      let nextParam = params[0];
-      let iterationValue = result[nextParam];
+      nextParam = params[0];
+      iterationValue = result[nextParam];
       
       if (isDefined(iterationValue)) {
         result = iterationValue;
         depthMap.push(nextParam);
         params.splice(0, 1);
+        
+        lastParam = nextParam;
       } else {
-        if (printStructureFlag) {
-          var structurePath = [];
-          
-          structurePath = Object.keys(result)
-          .filter((key) => {
-            return key.indexOf(nextParam) === 0;
-          });
-          
-          structurePath.forEach((key) => {
-            let value = result[key];
-            
-            if (isObject(value) && !isEmptyObject(value)) {
-              Object.keys(value).forEach((childKey) => {
-                structurePath.push(`${depthMap.concat([ key, childKey ]).join('.')}`);
-              });
-            }
-          });
-          
-          result = structurePath
-          .map((key) => {
-            let value = result[key];
-            
-            if (isObject(value) && !isEmptyObject(value)) {
-              key += '.';
-            }
-            
-            return `${depthMap.concat([ `${key}` ]).join('.')}`;
-          })
-          .join(' ');
-          params = [];
-        } else {
+        if (!printStructureFlag) {
           depthMap.unshift(depthMapBase);
           error(`Error: ${depthMap.join('.')}.${nextParam} is not defined. Returning ${depthMap.join('.')}.`);
-          params = [];
         }
+        params = [];
       }
+    }
+    
+    if (printStructureFlag) {
+      result = getStructureTree(lastParam, nextParam, depthMap, result);
     }
   } catch (err) {
     error('RuntimeError: ' + err);
