@@ -20,13 +20,5 @@ var getStructureTree = (lastValidParam, firstInvalidParam, depthMap, lastValidVa
     return depthMap.concat([ key ]).join('.')
   });
   
-  structure.forEach((key) => {
-    let value = lastValidValue[key];
-    
-    if (isObject(value) && !isEmptyObject(value)) {
-      structure.push(`${key}.`);
-    }
-  });
-  
   return structure.join(' ');
 };

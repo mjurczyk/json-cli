@@ -4,6 +4,7 @@ var showHelp = () => {
     'json -c [file] [values]': 'Print colored JSON structure',
     'json -s [file] [values]': 'Silent run (for non-CLI usage)',
     'json --always-color': 'Set the color flag permanently',
+    'json --completion': 'json --competion >> .bash_profile to enable autocompletion'
   };
   
   Object.keys(commands).forEach((key) => {

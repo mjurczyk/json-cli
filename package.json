@@ -1,6 +1,6 @@
 {
   "name": "json-viewer",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Pretty JSON viewer for the terminal",
   "main": "lib/json-viewer.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "npm run transpile && npm run compress",
     "transpile": "babel src --out-file lib/json-viewer.js",
     "compress": "uglifyjs lib/json-viewer.js -m -c -o lib/json-viewer.js",
-    "test": "node test/json-viewer-test.js"
+    "test": "node test/json-viewer-test.js",
+    "test:live": "npm run build && npm pack && npm install -g json-viewer-*.tgz && cat ./bin/json-complete >> ~/.json-autocomplete"
   },
   "keywords": [
     "json",

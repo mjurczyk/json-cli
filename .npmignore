@@ -1,6 +1,5 @@
 src/
 test/
-bin/json-complete
 *.tgz
 *.zip
 *.json

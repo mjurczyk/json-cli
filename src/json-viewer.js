@@ -104,6 +104,16 @@ var trimFlags = (params) => {
       case '--structure-tree':
         printStructureFlag = true;
       break;
+      case '--completion':
+        try {
+          let contents = fs.readFileSync(__dirname + '/../bin/json-complete', 'utf-8');
+          process.stdout.write(contents);
+        } catch (err) {
+          error('FlagsError: ' + err);
+          throw err;
+        }
+        breakFlag = true;
+      break;
     };
     
     params.splice(0, 1);

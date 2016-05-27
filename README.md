@@ -42,4 +42,34 @@ If the parameter you ask for doesn't exist, viewer will return the last valid pa
 
 ### Autocompletion
 
-You can use `tab` key to browse JSON properties on the fly and autofill long names.
+You can use the `tab` key to browse the JSON properties on the fly and autofill long names. 
+In order to enable this feature, you should append the autocompletion function to your `.bashrc`, `.bash_profile`, `.zshrc`. You can do using the build-in flag:
+
+```bash
+json --completion >> ~/.bash_profile
+```
+
+### Testing
+
+Testing module provides some basic coverage for the functionality:
+
+```bash
+npm run test
+```
+
+In order to test the CLI features and the auto-completion, use:
+
+```bash
+npm run test:live
+```
+
+This will build the scripts, pack them, install as a CLI and update the autocompletion script. You should also add the following lines to your `.bashrc`:
+
+```bash
+if [ -f ~/.json-autocomplete ]; then
+  . ~/.json-autocomplete
+fi
+```
+
+# License 
+MIT :octocat:
