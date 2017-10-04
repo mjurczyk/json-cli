@@ -10,9 +10,10 @@
     "compress": "uglifyjs lib/json-viewer.js -m -c -o lib/json-viewer.js",
     "lint": "eslint --ext .js --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
-    "pretest": "npm run lint",
-    "test": "node test/json-viewer-test.js",
-    "test:live": "npm run build && npm pack && npm install -g json-viewer-*.tgz && cat ./bin/json-complete >> ~/.json-autocomplete"
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "mocha --compilers js:babel-core/register ./test/**/*.spec.js",
+    "test:live": "npm run build && npm pack && npm install -g json-viewer-*.tgz && cat ./bin/json-complete >> ~/.json-autocomplete",
+    "prepublish": "npm run lint && npm run test"
   },
   "keywords": [
     "json",
@@ -42,8 +43,9 @@
     "babel-preset-stage-0": "^6.24.1",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
-    "chai": "^3.5.0",
+    "chai": "^4.1.2",
     "eslint": "^4.8.0",
+    "mocha": "^4.0.0",
     "uglify-js": "^2.6.2"
   }
 }
