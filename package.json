@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build",
     "build": "npm run transpile && npm run compress",
-    "transpile": "babel src --out-file lib/json-viewer.js",
+    "transpile": "babel src/index.js --out-file lib/json-viewer.js",
     "compress": "uglifyjs lib/json-viewer.js -m -c -o lib/json-viewer.js",
     "lint": "eslint --ext .js --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
@@ -37,7 +37,9 @@
     "babel": "^6.5.2",
     "babel-cli": "^6.6.5",
     "babel-eslint": "^8.0.1",
+    "babel-plugin-module-resolver": "^2.7.1",
     "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-0": "^6.24.1",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "chai": "^3.5.0",

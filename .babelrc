@@ -1,5 +1,18 @@
 {
   "presets": [
-    "es2015"
+    "es2015",
+    "stage-0"
+  ],
+  "plugins": [
+    [
+      "module-resolver", {
+        "root": [ "./src" ],
+        "alias": {
+          "@src": "./src",
+          "@test": "./test"
+        },
+        "extensions": [ ".js" ]
+      }
+    ]
   ]
 }
