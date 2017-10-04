@@ -1,13 +1,30 @@
 # JSON Viewer
 
-### Pretty JSON viewer for the terminal
+### Pretty JSON viewer for your terminal
 
-[![CircleCI](https://circleci.com/gh/mjurczyk/json-viewer/tree/master.svg?style=svg)](https://circleci.com/gh/mjurczyk/json-viewer/tree/master)
-[![CircleCI](https://circleci.com/gh/mjurczyk/json-viewer/tree/develop.svg?style=svg)](https://circleci.com/gh/mjurczyk/json-viewer/tree/develop)
+![jsonviewer2](https://cloud.githubusercontent.com/assets/9549760/13748907/3e4b4060-e9ff-11e5-9aa6-6997685a3609.gif)
 
 ___
 
-![jsonviewer2](https://cloud.githubusercontent.com/assets/9549760/13748907/3e4b4060-e9ff-11e5-9aa6-6997685a3609.gif)
+🚀 master ▶︎ 
+[![npm version](https://badge.fury.io/js/json-viewer.svg)](https://badge.fury.io/js/json-viewer)
+[![CircleCI](https://circleci.com/gh/mjurczyk/json-viewer/tree/master.svg?style=svg)](https://circleci.com/gh/mjurczyk/json-viewer/tree/master)
+[![codecov](https://codecov.io/gh/mjurczyk/json-viewer/branch/master/graph/badge.svg)](https://codecov.io/gh/mjurczyk/json-viewer)
+
+🛠 develop ▶︎ 
+[![GitHub version](https://badge.fury.io/gh/mjurczyk%2Fjson-viewer.svg)](https://badge.fury.io/gh/mjurczyk%2Fjson-viewer)
+[![CircleCI](https://circleci.com/gh/mjurczyk/json-viewer/tree/develop.svg?style=svg)](https://circleci.com/gh/mjurczyk/json-viewer/tree/develop)
+[![codecov](https://codecov.io/gh/mjurczyk/json-viewer/branch/develop/graph/badge.svg)](https://codecov.io/gh/mjurczyk/json-viewer)
+
+📚 dependencies ▶︎ 
+[![dependencies Status](https://david-dm.org/mjurczyk/json-viewer/status.svg)](https://david-dm.org/mjurczyk/json-viewer)
+[![devDependencies Status](https://david-dm.org/mjurczyk/json-viewer/dev-status.svg)](https://david-dm.org/mjurczyk/json-viewer?type=dev)
+
+👀 code climate ▶︎ 
+[![Code Climate](https://codeclimate.com/github/mjurczyk/json-viewer/badges/gpa.svg)](https://codeclimate.com/github/mjurczyk/json-viewer)
+[![Issue Count](https://codeclimate.com/github/mjurczyk/json-viewer/badges/issue_count.svg)](https://codeclimate.com/github/mjurczyk/json-viewer)
+
+___
 
 > After only so many times I was trying to recall a script or a dependency from the package.json, having my IDE closed and terminal opened.
 

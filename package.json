@@ -10,10 +10,10 @@
     "compress": "uglifyjs lib/json-viewer.js -m -c -o lib/json-viewer.js",
     "lint": "eslint --ext .js --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
-    "test": "npm run test:unit && npm run test:e2e",
+    "test": "npm run test:unit",
     "test:unit": "mocha --compilers js:babel-core/register ./test/**/*.spec.js",
     "test:live": "npm run build && npm pack && npm install -g json-viewer-*.tgz && cat ./bin/json-complete >> ~/.json-autocomplete",
-    "coverage": "nyc npm run test:unit"
+    "coverage": "nyc --reporter=lcov npm run test:unit"
   },
   "keywords": [
     "json",
