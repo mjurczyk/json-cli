@@ -13,7 +13,7 @@
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "mocha --compilers js:babel-core/register ./test/**/*.spec.js",
     "test:live": "npm run build && npm pack && npm install -g json-viewer-*.tgz && cat ./bin/json-complete >> ~/.json-autocomplete",
-    "prepublish": "npm run lint && npm run test"
+    "coverage": "nyc npm run test:unit"
   },
   "keywords": [
     "json",
@@ -46,6 +46,12 @@
     "chai": "^4.1.2",
     "eslint": "^4.8.0",
     "mocha": "^4.0.0",
+    "nyc": "^11.2.1",
     "uglify-js": "^2.6.2"
+  },
+  "nyc": {
+    "require": [
+      "./test/helpers/babel-polyfill.js"
+    ]
   }
 }

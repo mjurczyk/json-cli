@@ -2,6 +2,9 @@
 
 ### Pretty JSON viewer for the terminal
 
+[![CircleCI](https://circleci.com/gh/mjurczyk/json-viewer/tree/master.svg?style=svg)](https://circleci.com/gh/mjurczyk/json-viewer/tree/master)
+[![CircleCI](https://circleci.com/gh/mjurczyk/json-viewer/tree/develop.svg?style=svg)](https://circleci.com/gh/mjurczyk/json-viewer/tree/develop)
+
 ___
 
 ![jsonviewer2](https://cloud.githubusercontent.com/assets/9549760/13748907/3e4b4060-e9ff-11e5-9aa6-6997685a3609.gif)
