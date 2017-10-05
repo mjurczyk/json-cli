@@ -6,12 +6,13 @@
   "scripts": {
     "start": "npm run build",
     "build": "npm run transpile && npm run compress",
-    "transpile": "babel src/index.js --out-file lib/json-viewer.js",
+    "transpile": "babel src --out-dir lib",
     "compress": "uglifyjs lib/json-viewer.js -m -c -o lib/json-viewer.js",
     "lint": "eslint --ext .js --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
     "test": "npm run test:unit",
-    "test:unit": "mocha --compilers js:babel-core/register ./test/**/*.spec.js",
+    "test:watch": "npm run test:unit -- -w -R dot",
+    "test:unit": "mocha --compilers js:babel-core/register ./test/unit/**/*.spec.js",
     "test:live": "npm run build && npm pack && npm install -g json-viewer-*.tgz && cat ./bin/json-complete >> ~/.json-autocomplete",
     "coverage": "nyc --reporter=lcov npm run test:unit"
   },
@@ -42,7 +43,6 @@
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-stage-0": "^6.24.1",
     "babelify": "^7.2.0",
-    "browserify": "^13.0.0",
     "chai": "^4.1.2",
     "eslint": "^4.8.0",
     "mocha": "^4.0.0",
