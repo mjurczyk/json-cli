@@ -15,6 +15,7 @@ ___
 [![GitHub version](https://badge.fury.io/gh/mjurczyk%2Fjson-viewer.svg)](https://badge.fury.io/gh/mjurczyk%2Fjson-viewer)
 [![CircleCI](https://circleci.com/gh/mjurczyk/json-viewer/tree/develop.svg?style=svg)](https://circleci.com/gh/mjurczyk/json-viewer/tree/develop)
 [![codecov](https://codecov.io/gh/mjurczyk/json-viewer/branch/develop/graph/badge.svg)](https://codecov.io/gh/mjurczyk/json-viewer)
+[![maintainer](https://img.shields.io/badge/maintainer-%40mjurczyk-brightgreen.svg)](https://github.com/mjurczyk)
 
 📚 dependencies ▶︎ 
 [![dependencies Status](https://david-dm.org/mjurczyk/json-viewer/status.svg)](https://david-dm.org/mjurczyk/json-viewer)

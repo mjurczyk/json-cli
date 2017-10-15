@@ -9,10 +9,16 @@
         "root": [ "./src" ],
         "alias": {
           "@src": "./src",
+          "@utils": "./src/utils",
           "@test": "./test"
         },
         "extensions": [ ".js" ]
       }
     ]
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
 }
