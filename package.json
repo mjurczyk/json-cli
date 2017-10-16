@@ -15,7 +15,7 @@
     "test:watch": "cross-env BABEL_ENV=test npm run test:unit -- -w -R dot",
     "test:unit": "mocha --compilers js:babel-core/register './test/**/*.spec.js'",
     "test:live": "npm run test && npm run build && npm pack && npm install -g json-viewer-*.tgz",
-    "coverage": "cross-env BABEL_ENV=test nyc npm run test:unit",
+    "coverage": "cross-env BABEL_ENV=test nyc --reporter=lcov npm run test:unit",
     "coverage:html": "cross-env BABEL_ENV=test nyc --reporter=html npm run test:unit"
   },
   "keywords": [
@@ -57,7 +57,7 @@
     "nyc": "^11.2.1",
     "sinon": "^4.0.1",
     "sinon-chai": "^2.14.0",
-    "uglify-js": "^2.6.2"
+    "uglify-js": "^3.1.4"
   },
   "nyc": {
     "require": [
