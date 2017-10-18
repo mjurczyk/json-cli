@@ -3,6 +3,7 @@ import R from 'ramda';
 export const getCliInput = async () => {
   const isPiped = !process.stdin.isTTY;
 
+  /* istanbul ignore else */
   if (isPiped) {
     return new Promise((resolve, reject) => {
       let processInput = '';

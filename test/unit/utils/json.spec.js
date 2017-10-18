@@ -1,5 +1,9 @@
-import { expect } from 'chai';
-import { getDeepJsonBranch, getDeepJsonChildren } from '@utils/json';
+import chai, { expect } from 'chai';
+import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
+import { getDeepJsonBranch, getDeepJsonChildren, getJsonFromString } from '@utils/json';
+
+chai.use(sinonChai);
 
 describe('utils/json', () => {
   describe('getDeepJsonBranch', () => {
@@ -87,6 +91,43 @@ describe('utils/json', () => {
     it('should return an empty array when target branch is not enumerable', () => {
       expect(getDeepJsonChildren(json, 'testString')).to.deep.equal([]);
       expect(getDeepJsonChildren(json, 'testShallow')).to.deep.equal([]);
+    });
+  });
+
+  describe('getJsonFromString', () => {
+    let sandbox;
+    let output;
+
+    beforeEach(() => {
+      sandbox = sinon.sandbox.create();
+      output = process.stderr;
+
+      sandbox.stub(output, 'write');
+    });
+
+    afterEach(() => {
+      sandbox.restore();
+    });
+
+    it('return null for invalid or no input', () => {
+      expect(getJsonFromString()).to.equal(null);
+      expect(getJsonFromString(123)).to.equal(null);
+      expect(getJsonFromString(null)).to.equal(null);
+      expect(getJsonFromString({})).to.equal(null);
+    });
+
+    it('return null for invalid or no input', () => {
+      expect(getJsonFromString()).to.equal(null);
+      expect(getJsonFromString(123)).to.equal(null);
+      expect(getJsonFromString(null)).to.equal(null);
+      expect(getJsonFromString({})).to.equal(null);
+    });
+
+    it('should warn about invalid input and failed parsing', () => {
+      getJsonFromString('{');
+      getJsonFromString(2);
+
+      expect(output.write).to.have.been.calledTwice;
     });
   });
 });

@@ -2,7 +2,7 @@ import path from 'path';
 import { expect } from 'chai';
 import { defaultConfig, userConfigFile, getDefaultConfig, getUserConfig, setUserConfig } from '@src/config';
 
-describe('config.js', () => {
+describe('config', () => {
   describe('userConfigFile', () => {
     it('should be a string', () => {
       expect(userConfigFile).to.be.a('string');

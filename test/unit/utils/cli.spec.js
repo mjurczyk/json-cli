@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import path from 'path';
 import chai, { expect } from 'chai';
 import sinon from 'sinon';
@@ -7,6 +8,13 @@ import { getCliParams, getAutoCompletion, getMatchingPath, getMatchingFile } fro
 chai.use(sinonChai);
 
 describe('utils/cli', () => {
+  const mockDir = path.resolve(process.cwd(), 'test/helpers/mock');
+  const mockDirWithTrailingSlash = path.resolve(process.cwd(), 'test/helpers/mock/');
+  const mockDirWithIncompletePath = path.resolve(process.cwd(), 'test/helpers/mock/conf');
+  const mockDirWithSemiCompletePath = path.resolve(process.cwd(), 'test/helpers/mock/config.file.mock.jso');
+  const mockPath = path.resolve(process.cwd(), 'test/helpers/mock/config.file.mock.json');
+  const nonJsonMockPath = path.resolve(process.cwd(), 'test/helpers/mock/config.file.mock.js');
+
   describe('getCliParams', () => {
     it('should return cli object schema', () => {
       const result = getCliParams();
@@ -26,13 +34,6 @@ describe('utils/cli', () => {
       expect(getAutoCompletion(undefined, undefined)).to.be.an('array');
       expect(getAutoCompletion(null, null)).to.be.an('array');
     });
-
-    const mockDir = path.resolve(process.cwd(), 'test/helpers/mock');
-    const mockDirWithTrailingSlash = path.resolve(process.cwd(), 'test/helpers/mock/');
-    const mockDirWithIncompletePath = path.resolve(process.cwd(), 'test/helpers/mock/conf');
-    const mockDirWithSemiCompletePath = path.resolve(process.cwd(), 'test/helpers/mock/config.file.mock.jso');
-    const mockPath = path.resolve(process.cwd(), 'test/helpers/mock/config.file.mock.json');
-    const nonJsonMockPath = path.resolve(process.cwd(), 'test/helpers/mock/config.file.mock.js');
 
     describe('for no given arguments', () => {
       it('should return empty array', () => {
@@ -201,5 +202,26 @@ describe('utils/cli', () => {
     it('should assume empty string as a default file path', () => {
       expect(getMatchingFile()).to.deep.equal(getMatchingFile(''));
     });
+  });
+
+  describe('getCliInput', () => {
+    const mainScriptPath = path.resolve(process.cwd(), 'src/index');
+    const scriptTimeout = 5000;
+
+    it('should use argv-based data if nothing is piped-in', () => {
+      const cliScript = execSync(`babel-node "${mainScriptPath}" "${mockPath}" color`, {
+        encoding: 'utf-8'
+      });
+
+      expect(cliScript).to.be.equal('true\n');
+    }).timeout(scriptTimeout);
+
+    it('should combine piped and argv data', () => {
+      const cliScript = execSync(`cd ${process.cwd()} && cat package.json | babel-node "${mainScriptPath}" name`, {
+        encoding: 'utf-8'
+      });
+
+      expect(cliScript).to.contain('json-viewer');
+    }).timeout(scriptTimeout);
   });
 });
