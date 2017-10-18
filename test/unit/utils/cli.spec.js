@@ -206,7 +206,7 @@ describe('utils/cli', () => {
 
   describe('getCliInput', () => {
     const mainScriptPath = path.resolve(process.cwd(), 'src/index');
-    const scriptTimeout = 5000;
+    const scriptTimeout = 10000;
 
     it('should use argv-based data if nothing is piped-in', () => {
       const cliScript = execSync(`babel-node "${mainScriptPath}" "${mockPath}" color`, {
