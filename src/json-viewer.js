@@ -1,14 +1,25 @@
 import { readJsonFile } from '@utils/files';
-import { getDeepJsonBranch } from '@utils/json';
+import { getDeepJsonBranch, getJsonFromString } from '@utils/json';
 
-export const jsonViewer = (params = {}) => {
-  const [
-    targetFilePath,
-    targetJsonBranch
-  ] = params._;
+export const jsonViewer = (processInput, params = {}) => {
+  const unnamedParams = params._;
 
-  const json = readJsonFile(targetFilePath);
-  const jsonBranch = getDeepJsonBranch(json, targetJsonBranch);
+  let json;
+  let targetFilePath;
+  let targetJsonBranch;
 
-  return jsonBranch;
+  if (processInput) {
+    targetJsonBranch = unnamedParams[0];
+
+    json = getJsonFromString(processInput);
+  } else if (unnamedParams.length > 0) {
+    targetFilePath = unnamedParams[0];
+    targetJsonBranch = unnamedParams[1];
+
+    json = readJsonFile(targetFilePath);
+  } else {
+    return;
+  }
+
+  return getDeepJsonBranch(json, targetJsonBranch);
 };
