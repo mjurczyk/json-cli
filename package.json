@@ -25,6 +25,10 @@
     "reader",
     "cat"
   ],
+  "files": [
+    "lib",
+    "bin"
+  ],
   "author": "mjurczyk",
   "license": "MIT",
   "bin": {
