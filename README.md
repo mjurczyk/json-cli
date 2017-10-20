@@ -2,7 +2,8 @@
 
 ### Pretty JSON viewer for your terminal
 
-![jsonviewer2](https://cloud.githubusercontent.com/assets/9549760/13748907/3e4b4060-e9ff-11e5-9aa6-6997685a3609.gif)
+![jsonviewer2](https://user-images.githubusercontent.com/9549760/31833904-59caaf0c-b5cc-11e7-8ccd-2d406e1bfd01.gif)
+
 
 ___
 
@@ -37,7 +38,7 @@ ___
 * [Usage](#usage-basic)
 	* [Basic](#usage-basic)
 	* [Colors](#usage-colors)
-	* [Piping & Redirection](#usage-piping-&-redirection)
+	* [Piping & Redirection](#usage-piping--redirection)
 	* [Always Color](#usage-always-color)
 	* [Autocompletion](#usage-autocompletion)
 * [Contributing](#contributing)
