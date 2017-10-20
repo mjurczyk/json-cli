@@ -4,7 +4,7 @@ import { jsonViewer } from '@src/json-viewer';
 
 describe('json-viewer', () => {
   it('should assume no params by default', () => {
-    expect(jsonViewer()).to.be.undefined;
+    expect(jsonViewer()).to.be.null;
   });
 
   it('should return proper json property passed in params', () => {

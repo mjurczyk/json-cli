@@ -1,4 +1,3 @@
-
 import { jsonViewer } from '@src/json-viewer';
 import { setUserConfig, getUserConfig } from '@src/config';
 import { getCliParams, getCliInput } from '@utils/cli';
