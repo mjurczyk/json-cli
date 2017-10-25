@@ -223,5 +223,13 @@ describe('utils/cli', () => {
 
       expect(cliScript).to.contain('json-viewer');
     }).timeout(scriptTimeout);
+
+    it('should output nothing when asked to set always-color flag', () => {
+      const cliScript = execSync(`cd ${process.cwd()} && cat package.json | babel-node "${mainScriptPath}" --always-color`, {
+        encoding: 'utf-8'
+      });
+
+      expect(cliScript).to.be.empty;
+    }).timeout(scriptTimeout);
   });
 });
