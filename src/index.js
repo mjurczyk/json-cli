@@ -1,5 +1,5 @@
 import { jsonViewer } from '@src/json-viewer';
-import { setUserConfig, getUserConfig } from '@src/config';
+import { setUserConfig, getUserConfig } from '@utils/config';
 import { getCliParams, getCliInput } from '@utils/cli';
 import { prettyPrint } from '@utils/console/pretty-print';
 
