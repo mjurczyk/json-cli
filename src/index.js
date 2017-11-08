@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 import { jsonViewer } from '@src/json-viewer';
 import { setUserConfig, getUserConfig } from '@utils/config';
 import { getCliParams, getCliInput } from '@utils/cli';
