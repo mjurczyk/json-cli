@@ -8,7 +8,7 @@ describe('json-viewer', () => {
   });
 
   it('should return proper json property passed in params', () => {
-    const mockConfigPath = path.resolve(`${__dirname}/../helpers/mock/config.file.mock.json`);
+    const mockConfigPath = path.resolve(process.cwd(), 'test/helpers/mock/config.file.mock.json');
     const params = {
       _: [
         mockConfigPath,
