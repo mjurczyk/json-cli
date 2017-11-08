@@ -13,7 +13,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "cross-env BABEL_ENV=test npm run test:unit",
     "test:watch": "cross-env BABEL_ENV=test npm run test:unit -- -w -R dot",
-    "test:unit": "mocha --compilers js:babel-core/register test/**/*.spec.js --require babel-polyfill",
+    "test:unit": "mocha --compilers js:babel-core/register 'test/**/*.spec.js' --require babel-polyfill",
     "test:live": "npm run test && npm run build && npm pack && npm install -g json-viewer-*.tgz",
     "coverage": "cross-env BABEL_ENV=test nyc --reporter=lcov npm run test:unit",
     "coverage:html": "cross-env BABEL_ENV=test nyc --reporter=html npm run test:unit"
