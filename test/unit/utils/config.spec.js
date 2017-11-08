@@ -1,6 +1,6 @@
 import path from 'path';
 import { expect } from 'chai';
-import { defaultConfig, userConfigFile, getDefaultConfig, getUserConfig, setUserConfig } from '@src/config';
+import { defaultConfig, userConfigFile, getDefaultConfig, getUserConfig, setUserConfig } from '@utils/config';
 
 describe('config', () => {
   describe('userConfigFile', () => {
