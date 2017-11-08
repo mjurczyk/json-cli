@@ -13,6 +13,7 @@ export const getCliParams = () => {
       describe: 'Always show colored output',
       type: 'boolean'
     })
+    .alias('--version', '-v')
     .completion('completion', 'Generate auto-completion script', getAutoCompletion)
     .help()
     .argv;
