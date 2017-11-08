@@ -18,8 +18,8 @@ describe('config', () => {
   });
 
   describe('getUserConfig', () => {
-    const jsMockConfigPath = path.resolve(`${__dirname}/../helpers/mock/config.file.mock.js`);
-    const jsonMockConfigPath = path.resolve(`${__dirname}/../helpers/mock/config.file.mock.json`);
+    const jsMockConfigPath = path.resolve(process.cwd(), 'test/helpers/mock/config.file.mock.js');
+    const jsonMockConfigPath = path.resolve(process.cwd(), 'test/helpers/mock/config.file.mock.json');
 
     it('should return some user config', () => {
       const userConfig = getUserConfig();
