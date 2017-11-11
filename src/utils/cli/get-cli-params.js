@@ -14,6 +14,7 @@ export const getCliParams = () => {
       type: 'boolean'
     })
     .alias('--version', '-v')
+    .alias('--help', '-h')
     .completion('completion', 'Generate auto-completion script', getAutoCompletion)
     .help()
     .argv;
