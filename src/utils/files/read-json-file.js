@@ -17,8 +17,7 @@ export const readJsonFile = (filepath) => {
 
       return fileContents;
     } catch (error) {
-      warn(`File ${normalizedPath} cannot be read.`);
-      warn(error);
+      warn(`File ${normalizedPath} cannot be read or not a valid JSON file.`);
 
       return null;
     }

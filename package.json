@@ -1,6 +1,6 @@
 {
   "name": "json-viewer",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "description": "Pretty JSON viewer for the terminal",
   "main": "lib/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "cross-env BABEL_ENV=test npm run test:unit",
     "test:watch": "cross-env BABEL_ENV=test npm run test:unit -- -w -R dot",
-    "test:unit": "mocha --compilers js:babel-core/register './test/**/*.spec.js' --require babel-polyfill",
+    "test:unit": "mocha --compilers js:babel-core/register 'test/**/*.spec.js' --require babel-polyfill",
     "test:live": "npm run test && npm run build && npm pack && npm install -g json-viewer-*.tgz",
     "coverage": "cross-env BABEL_ENV=test nyc --reporter=lcov npm run test:unit",
     "coverage:html": "cross-env BABEL_ENV=test nyc --reporter=html npm run test:unit"
@@ -24,6 +24,10 @@
     "viewer",
     "reader",
     "cat"
+  ],
+  "files": [
+    "lib",
+    "bin"
   ],
   "author": "mjurczyk",
   "license": "MIT",
@@ -38,7 +42,8 @@
     "colors": "1.1.2",
     "fs-jetpack": "1.2.0",
     "ramda": "0.25.0",
-    "yargs": "9.0.1"
+    "yargs": "9.0.1",
+    "babel-polyfill": "6.26.0"
   },
   "devDependencies": {
     "babel": "6.5.2",
@@ -47,7 +52,6 @@
     "babel-plugin-istanbul": "4.1.5",
     "babel-plugin-module-resolver": "2.7.1",
     "babel-plugin-rewire": "1.1.0",
-    "babel-polyfill": "6.26.0",
     "babel-preset-es2015": "6.6.0",
     "babel-preset-stage-0": "6.24.1",
     "babelify": "7.2.0",

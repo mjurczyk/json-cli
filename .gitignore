@@ -5,3 +5,4 @@ node_modules/
 coverage/
 *.tgz
 src/.user-config.json
+.user-config.json
