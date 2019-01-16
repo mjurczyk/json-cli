@@ -4,7 +4,7 @@ export const defaultConfig = {
   color: false
 };
 
-export const userConfigFile = path.resolve(process.cwd(), '.user-config.json');
+export const userConfigFile = path.resolve(__dirname, '.user-config.json');
 
 export * from './get-default-config';
 export * from './get-user-config';
